@@ -1,0 +1,29 @@
+.RECIPEPREFIX   := >
+SPACK_VENV.DIR          := /spack/var/spack/environments/magma/.spack-env/view/
+
+ifeq (${SPACK_VENV.DIR},)
+$(error must activate the spack environment named magma first)
+endif
+
+CPP                     := g++ -O3 -std=c++11 
+LD                      := g++ -O3 -std=c++11
+CPP.CFLAGS              := -Wall
+
+MAGMA.CFLAGS            := -DADD_ -I ${SPACK_VENV.DIR}/include
+MAGMA.LIBS              := -L ${SPACK_VENV.DIR}/lib -lmagma_sparse -lmagma -lopenblas\
+                           -L ${SPACK_VENV.DIR}/lib64 -lcublas -lcudart -lcusparse
+
+MAIN.EXE                := exeRec800_2
+MAIN.SRC                := SVD_dp_DandQ.cpp
+MAIN.OBJ                := $(patsubst %.cpp,%.o,${MAIN.SRC})
+
+all: ${MAIN.EXE}
+
+clean:
+> -rm -f *.o ${MAIN.EXE}
+
+${MAIN.EXE}: ${MAIN.OBJ}
+> $(LD) $(MAGMA.LIBS) -Wl,-rpath -Wl,${SPACK_VENV.DIR}/lib -Wl,-rpath -Wl,${SPACK_VENV.DIR}/lib64 -o $@ $+
+
+%.o: %.cpp Makefile
+> $(CPP) $(CPP.CFLAGS) $(MAGMA.CFLAGS) -c -o $@ $<

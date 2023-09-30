@@ -1,0 +1,4 @@
+Nitin: Sep29/2023
+1) Start running DMRG++ with single and multi-gpu runs on Lisa1 and/or Sockeye.
+2) Add gpu implementaion for SVD in DMRG++, overload mycall funtion in Svd.h
+3) Write a Randomized SVD (CPU version) and compare with dgesdd (CPU).

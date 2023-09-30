@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH --job-name=gpu_test
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=4
+#SBATCH --gres=gpu:2
+#SBATCH --partition=gpu
+#SBATCH --time=16:00:00
+#SBATCH -o gpu_test.%j
+
+source /spack/share/spack/setup-env.sh
+module load magma/2.6.2-gcc-9.5.0-ty5jsnj
+
+hostname
+date
+time ./exeRec1600_2 > out_run_SVD_N1600_WithVectors_DandC_2xN_check.txt
+date
