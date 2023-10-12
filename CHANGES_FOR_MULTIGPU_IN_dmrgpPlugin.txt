@@ -1,0 +1,60 @@
+diff --git a/src/dmrg_Xgemm_vbatch.c b/src/dmrg_Xgemm_vbatch.c
+index 97fb9eb..623908a 100644
+--- a/src/dmrg_Xgemm_vbatch.c
++++ b/src/dmrg_Xgemm_vbatch.c
+@@ -1,6 +1,6 @@
+ #include <complex>
+ #include <assert.h>
+-
++#include <iostream>
+ #include "Xgemm_.h"
+ #include "dmrg_get_wtime.h"
+ #include "dmrg_malloc.h"
+@@ -395,7 +395,7 @@ size_t nbytes_total = 0;
+     int gBatchCount[MAXGPUS];
+ 
+ 
+-
++    std::cout<<"No. of gpus used = "<<ngpu<<std::endl;
+     int inc = (batch_size + (ngpu-1))/ngpu;
+     int idev = 0;
+     for(idev = 0; idev < ngpu; idev++) {
+@@ -527,7 +527,16 @@ size_t nbytes_total = 0;
+      * non-blocking computations
+      * -------------------------
+      */
+-    for(idev=0; idev < ngpu; idev++) {
++      int DevicesUsed;
++      if(batch_size==1){
++        DevicesUsed=1;
++        }
++        else{
++        assert(batch_size>1);
++        DevicesUsed=ngpu;
++        }
++
++        for(idev=0; idev < DevicesUsed; idev++) {
+ 
+        int device = dmrg_get_device(idev);
+        magma_setdevice( device );
+diff --git a/src/dmrg_malloc.c b/src/dmrg_malloc.c
+index 0f58844..bf3e190 100644
+--- a/src/dmrg_malloc.c
++++ b/src/dmrg_malloc.c
+@@ -103,6 +103,7 @@ void *ptr = NULL;
+ 
+    if (dmrg_get_ngpu() == 1)
+    {
++#ifdef NOADVISE
+ #ifdef USE_CUMEMADVISE
+      CUdeviceptr devPtr = (CUdeviceptr) ptr;
+      size_t count = alloc_size;
+@@ -119,6 +120,8 @@ void *ptr = NULL;
+                                       device);
+      assert( ierr == cudaSuccess );
+ #endif
++
++#endif
+    }
+ 
+ #else
