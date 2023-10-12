@@ -1,0 +1,11 @@
+load modules :
+mpich/gcc
+hdf5/1.12.1
+gcc/10.1.0
+
+compile the code
+
+
+
+Before running:
+unload gcc/10.1.0

@@ -1,0 +1,459 @@
+KronUtil.o: KronUtil.cpp csr_den_kron_mult.cpp util.h \
+ ../../../PsimagLite/src/Complex.h \
+ ../../../PsimagLite/src/../loki/TypeTraits.h \
+ ../../../PsimagLite/src/../loki/Typelist.h \
+ ../../../PsimagLite/src/../loki/NullType.h \
+ ../../../PsimagLite/src/../loki/TypeManip.h \
+ ../../../PsimagLite/src/../loki/TypelistMacros.h \
+ ../../../PsimagLite/src/../loki/Sequence.h \
+ ../../../PsimagLite/src/AllocatorCpu.h ../../../PsimagLite/src/GemmR.h \
+ ../../../PsimagLite/src/BLAS.h ../../../PsimagLite/src/Parallelizer2.h \
+ ../../../PsimagLite/src/Concurrency.h \
+ ../../../PsimagLite/src/CodeSectionParams.h \
+ ../../../PsimagLite/src/FloatingPoint.h ../../../PsimagLite/src/LAPACK.h \
+ ../../../PsimagLite/src/LabelDisabled.h ../../../PsimagLite/src/Vector.h \
+ ../../../PsimagLite/src/Complex.h ../../../PsimagLite/src/Mpi.h \
+ ../../../PsimagLite/src/MpiNo.h \
+ ../../../PsimagLite/src/Parallelizer2Pthread.h \
+ ../../../PsimagLite/src/LoadBalancerDefault.h \
+ ../../../PsimagLite/src/Sort.h ../../../PsimagLite/src/TypeToString.h \
+ KronUtil.h ../../../PsimagLite/src/CrsMatrix.h \
+ ../../../PsimagLite/src/Io/IoSerializerStub.h \
+ ../../../PsimagLite/src/Io/IoNgSerializer.h \
+ ../../../PsimagLite/src/Io/../Complex.h \
+ ../../../PsimagLite/src/Io/../TypeToString.h \
+ ../../../PsimagLite/src/Io/../Vector.h \
+ ../../../PsimagLite/src/Io/TypeToH5.h \
+ ../../../PsimagLite/src/Io/../AllocatorCpu.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Cpp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Include.h \
+ /opt/hdf5/code/1.12.1/install/include/hdf5.h \
+ /opt/hdf5/code/1.12.1/install/include/H5public.h \
+ /opt/hdf5/code/1.12.1/install/include/H5pubconf.h \
+ /opt/hdf5/code/1.12.1/install/include/H5version.h \
+ /opt/hdf5/code/1.12.1/install/include/H5api_adpt.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Apublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Ipublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Opublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Lpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Tpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5ACpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Cpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Dpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Epublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Epubgen.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Fpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Gpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Mpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5MMpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Ppublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Zpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5PLpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Rpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Spublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VLpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VLconnector.h \
+ /opt/hdf5/code/1.12.1/install/include/H5ESpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VLconnector_passthru.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VLnative.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDcore.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDdirect.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDfamily.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDhdfs.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDlog.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDmirror.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDmpi.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDmpio.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDmulti.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDros3.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDsec2.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDsplitter.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDstdio.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VLpassthru.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Exception.h \
+ /opt/hdf5/code/1.12.1/install/include/H5IdComponent.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DataSpace.h \
+ /opt/hdf5/code/1.12.1/install/include/H5PropList.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FaccProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FcreatProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5OcreatProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DcreatProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DxferProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5LcreatProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5LaccProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DaccProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Location.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Classes.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Object.h \
+ /opt/hdf5/code/1.12.1/install/include/H5AbstractDs.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Attribute.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DataType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5AtomType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5PredType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5EnumType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5IntType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FloatType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5StrType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5CompType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5ArrayType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VarLenType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DataSet.h \
+ /opt/hdf5/code/1.12.1/install/include/H5CommonFG.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Group.h \
+ /opt/hdf5/code/1.12.1/install/include/H5File.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Library.h \
+ ../../../PsimagLite/src/Matrix.h ../../../PsimagLite/src/LapackExtra.h \
+ ../../../PsimagLite/loki/TypeTraits.h ../../../PsimagLite/src/Matrix.h \
+ ../../../PsimagLite/src/Vector.h \
+ ../../../PsimagLite/src/MatrixNonOwned.h csr_kron_mult.cpp \
+ den_csr_kron_mult.cpp den_kron_mult.cpp
+util.o: util.cpp coord2csr.cpp util.h ../../../PsimagLite/src/Complex.h \
+ ../../../PsimagLite/src/../loki/TypeTraits.h \
+ ../../../PsimagLite/src/../loki/Typelist.h \
+ ../../../PsimagLite/src/../loki/NullType.h \
+ ../../../PsimagLite/src/../loki/TypeManip.h \
+ ../../../PsimagLite/src/../loki/TypelistMacros.h \
+ ../../../PsimagLite/src/../loki/Sequence.h \
+ ../../../PsimagLite/src/AllocatorCpu.h ../../../PsimagLite/src/GemmR.h \
+ ../../../PsimagLite/src/BLAS.h ../../../PsimagLite/src/Parallelizer2.h \
+ ../../../PsimagLite/src/Concurrency.h \
+ ../../../PsimagLite/src/CodeSectionParams.h \
+ ../../../PsimagLite/src/FloatingPoint.h ../../../PsimagLite/src/LAPACK.h \
+ ../../../PsimagLite/src/LabelDisabled.h ../../../PsimagLite/src/Vector.h \
+ ../../../PsimagLite/src/Complex.h ../../../PsimagLite/src/Mpi.h \
+ ../../../PsimagLite/src/MpiNo.h \
+ ../../../PsimagLite/src/Parallelizer2Pthread.h \
+ ../../../PsimagLite/src/LoadBalancerDefault.h \
+ ../../../PsimagLite/src/Sort.h ../../../PsimagLite/src/TypeToString.h \
+ KronUtil.h ../../../PsimagLite/src/CrsMatrix.h \
+ ../../../PsimagLite/src/Io/IoSerializerStub.h \
+ ../../../PsimagLite/src/Io/IoNgSerializer.h \
+ ../../../PsimagLite/src/Io/../Complex.h \
+ ../../../PsimagLite/src/Io/../TypeToString.h \
+ ../../../PsimagLite/src/Io/../Vector.h \
+ ../../../PsimagLite/src/Io/TypeToH5.h \
+ ../../../PsimagLite/src/Io/../AllocatorCpu.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Cpp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Include.h \
+ /opt/hdf5/code/1.12.1/install/include/hdf5.h \
+ /opt/hdf5/code/1.12.1/install/include/H5public.h \
+ /opt/hdf5/code/1.12.1/install/include/H5pubconf.h \
+ /opt/hdf5/code/1.12.1/install/include/H5version.h \
+ /opt/hdf5/code/1.12.1/install/include/H5api_adpt.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Apublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Ipublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Opublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Lpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Tpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5ACpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Cpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Dpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Epublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Epubgen.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Fpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Gpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Mpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5MMpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Ppublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Zpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5PLpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Rpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Spublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VLpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VLconnector.h \
+ /opt/hdf5/code/1.12.1/install/include/H5ESpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VLconnector_passthru.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VLnative.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDcore.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDdirect.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDfamily.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDhdfs.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDlog.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDmirror.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDmpi.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDmpio.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDmulti.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDros3.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDsec2.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDsplitter.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDstdio.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VLpassthru.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Exception.h \
+ /opt/hdf5/code/1.12.1/install/include/H5IdComponent.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DataSpace.h \
+ /opt/hdf5/code/1.12.1/install/include/H5PropList.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FaccProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FcreatProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5OcreatProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DcreatProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DxferProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5LcreatProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5LaccProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DaccProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Location.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Classes.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Object.h \
+ /opt/hdf5/code/1.12.1/install/include/H5AbstractDs.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Attribute.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DataType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5AtomType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5PredType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5EnumType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5IntType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FloatType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5StrType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5CompType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5ArrayType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VarLenType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DataSet.h \
+ /opt/hdf5/code/1.12.1/install/include/H5CommonFG.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Group.h \
+ /opt/hdf5/code/1.12.1/install/include/H5File.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Library.h \
+ ../../../PsimagLite/src/Matrix.h ../../../PsimagLite/src/LapackExtra.h \
+ ../../../PsimagLite/loki/TypeTraits.h ../../../PsimagLite/src/Matrix.h \
+ ../../../PsimagLite/src/Vector.h \
+ ../../../PsimagLite/src/MatrixNonOwned.h csc_kron_mult.cpp \
+ csc_matmul_post.cpp csc_matmul_pre.cpp csr_den_kron_mult.cpp csr_eye.cpp \
+ csr_is_eye.cpp csr_kron_mult.cpp csr_kron_submatrix.cpp \
+ csr_matmul_post.cpp csr_matmul_pre.cpp csr_submatrix.cpp \
+ ../../../PsimagLite/src/PsimagLite.h \
+ ../../../PsimagLite/src/AnsiColors.h \
+ ../../../PsimagLite/src/MicroArchitecture.h \
+ ../../../PsimagLite/src/PsiBase64.h ../../../PsimagLite/src/Random48.h \
+ csr_transpose.cpp den_csr_kron_mult.cpp den_eye.cpp den_gen_matrix.cpp \
+ den_is_eye.cpp den_is_zeros.cpp den_kron_form.cpp \
+ den_kron_form_general.cpp den_kron_mult.cpp den_kron_submatrix.cpp \
+ den_matmul_post.cpp den_matmul_pre.cpp den_nnz.cpp den_submatrix.cpp \
+ den_transpose.cpp den_zeros.cpp estimate_kron_cost.cpp
+utilComplex.o: utilComplex.cpp coord2csr.cpp util.h \
+ ../../../PsimagLite/src/Complex.h \
+ ../../../PsimagLite/src/../loki/TypeTraits.h \
+ ../../../PsimagLite/src/../loki/Typelist.h \
+ ../../../PsimagLite/src/../loki/NullType.h \
+ ../../../PsimagLite/src/../loki/TypeManip.h \
+ ../../../PsimagLite/src/../loki/TypelistMacros.h \
+ ../../../PsimagLite/src/../loki/Sequence.h \
+ ../../../PsimagLite/src/AllocatorCpu.h ../../../PsimagLite/src/GemmR.h \
+ ../../../PsimagLite/src/BLAS.h ../../../PsimagLite/src/Parallelizer2.h \
+ ../../../PsimagLite/src/Concurrency.h \
+ ../../../PsimagLite/src/CodeSectionParams.h \
+ ../../../PsimagLite/src/FloatingPoint.h ../../../PsimagLite/src/LAPACK.h \
+ ../../../PsimagLite/src/LabelDisabled.h ../../../PsimagLite/src/Vector.h \
+ ../../../PsimagLite/src/Complex.h ../../../PsimagLite/src/Mpi.h \
+ ../../../PsimagLite/src/MpiNo.h \
+ ../../../PsimagLite/src/Parallelizer2Pthread.h \
+ ../../../PsimagLite/src/LoadBalancerDefault.h \
+ ../../../PsimagLite/src/Sort.h ../../../PsimagLite/src/TypeToString.h \
+ KronUtil.h ../../../PsimagLite/src/CrsMatrix.h \
+ ../../../PsimagLite/src/Io/IoSerializerStub.h \
+ ../../../PsimagLite/src/Io/IoNgSerializer.h \
+ ../../../PsimagLite/src/Io/../Complex.h \
+ ../../../PsimagLite/src/Io/../TypeToString.h \
+ ../../../PsimagLite/src/Io/../Vector.h \
+ ../../../PsimagLite/src/Io/TypeToH5.h \
+ ../../../PsimagLite/src/Io/../AllocatorCpu.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Cpp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Include.h \
+ /opt/hdf5/code/1.12.1/install/include/hdf5.h \
+ /opt/hdf5/code/1.12.1/install/include/H5public.h \
+ /opt/hdf5/code/1.12.1/install/include/H5pubconf.h \
+ /opt/hdf5/code/1.12.1/install/include/H5version.h \
+ /opt/hdf5/code/1.12.1/install/include/H5api_adpt.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Apublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Ipublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Opublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Lpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Tpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5ACpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Cpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Dpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Epublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Epubgen.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Fpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Gpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Mpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5MMpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Ppublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Zpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5PLpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Rpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Spublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VLpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VLconnector.h \
+ /opt/hdf5/code/1.12.1/install/include/H5ESpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VLconnector_passthru.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VLnative.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDcore.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDdirect.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDfamily.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDhdfs.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDlog.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDmirror.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDmpi.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDmpio.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDmulti.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDros3.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDsec2.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDsplitter.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDstdio.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VLpassthru.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Exception.h \
+ /opt/hdf5/code/1.12.1/install/include/H5IdComponent.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DataSpace.h \
+ /opt/hdf5/code/1.12.1/install/include/H5PropList.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FaccProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FcreatProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5OcreatProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DcreatProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DxferProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5LcreatProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5LaccProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DaccProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Location.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Classes.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Object.h \
+ /opt/hdf5/code/1.12.1/install/include/H5AbstractDs.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Attribute.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DataType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5AtomType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5PredType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5EnumType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5IntType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FloatType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5StrType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5CompType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5ArrayType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VarLenType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DataSet.h \
+ /opt/hdf5/code/1.12.1/install/include/H5CommonFG.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Group.h \
+ /opt/hdf5/code/1.12.1/install/include/H5File.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Library.h \
+ ../../../PsimagLite/src/Matrix.h ../../../PsimagLite/src/LapackExtra.h \
+ ../../../PsimagLite/loki/TypeTraits.h ../../../PsimagLite/src/Matrix.h \
+ ../../../PsimagLite/src/Vector.h \
+ ../../../PsimagLite/src/MatrixNonOwned.h csc_kron_mult.cpp \
+ csc_matmul_post.cpp csc_matmul_pre.cpp csr_den_kron_mult.cpp csr_eye.cpp \
+ csr_is_eye.cpp csr_kron_mult.cpp csr_kron_submatrix.cpp \
+ csr_matmul_post.cpp csr_matmul_pre.cpp csr_submatrix.cpp \
+ ../../../PsimagLite/src/PsimagLite.h \
+ ../../../PsimagLite/src/AnsiColors.h \
+ ../../../PsimagLite/src/MicroArchitecture.h \
+ ../../../PsimagLite/src/PsiBase64.h ../../../PsimagLite/src/Random48.h \
+ csr_transpose.cpp den_csr_kron_mult.cpp den_eye.cpp den_gen_matrix.cpp \
+ den_is_eye.cpp den_is_zeros.cpp den_kron_form.cpp \
+ den_kron_form_general.cpp den_kron_mult.cpp den_kron_submatrix.cpp \
+ den_matmul_post.cpp den_matmul_pre.cpp den_nnz.cpp den_submatrix.cpp \
+ den_transpose.cpp den_zeros.cpp estimate_kron_cost.cpp
+csc_nnz.o: csc_nnz.cpp util.h ../../../PsimagLite/src/Complex.h \
+ ../../../PsimagLite/src/../loki/TypeTraits.h \
+ ../../../PsimagLite/src/../loki/Typelist.h \
+ ../../../PsimagLite/src/../loki/NullType.h \
+ ../../../PsimagLite/src/../loki/TypeManip.h \
+ ../../../PsimagLite/src/../loki/TypelistMacros.h \
+ ../../../PsimagLite/src/../loki/Sequence.h \
+ ../../../PsimagLite/src/AllocatorCpu.h ../../../PsimagLite/src/GemmR.h \
+ ../../../PsimagLite/src/BLAS.h ../../../PsimagLite/src/Parallelizer2.h \
+ ../../../PsimagLite/src/Concurrency.h \
+ ../../../PsimagLite/src/CodeSectionParams.h \
+ ../../../PsimagLite/src/FloatingPoint.h ../../../PsimagLite/src/LAPACK.h \
+ ../../../PsimagLite/src/LabelDisabled.h ../../../PsimagLite/src/Vector.h \
+ ../../../PsimagLite/src/Complex.h ../../../PsimagLite/src/Mpi.h \
+ ../../../PsimagLite/src/MpiNo.h \
+ ../../../PsimagLite/src/Parallelizer2Pthread.h \
+ ../../../PsimagLite/src/LoadBalancerDefault.h \
+ ../../../PsimagLite/src/Sort.h ../../../PsimagLite/src/TypeToString.h \
+ KronUtil.h ../../../PsimagLite/src/CrsMatrix.h \
+ ../../../PsimagLite/src/Io/IoSerializerStub.h \
+ ../../../PsimagLite/src/Io/IoNgSerializer.h \
+ ../../../PsimagLite/src/Io/../Complex.h \
+ ../../../PsimagLite/src/Io/../TypeToString.h \
+ ../../../PsimagLite/src/Io/../Vector.h \
+ ../../../PsimagLite/src/Io/TypeToH5.h \
+ ../../../PsimagLite/src/Io/../AllocatorCpu.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Cpp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Include.h \
+ /opt/hdf5/code/1.12.1/install/include/hdf5.h \
+ /opt/hdf5/code/1.12.1/install/include/H5public.h \
+ /opt/hdf5/code/1.12.1/install/include/H5pubconf.h \
+ /opt/hdf5/code/1.12.1/install/include/H5version.h \
+ /opt/hdf5/code/1.12.1/install/include/H5api_adpt.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Apublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Ipublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Opublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Lpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Tpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5ACpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Cpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Dpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Epublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Epubgen.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Fpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Gpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Mpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5MMpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Ppublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Zpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5PLpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Rpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Spublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VLpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VLconnector.h \
+ /opt/hdf5/code/1.12.1/install/include/H5ESpublic.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VLconnector_passthru.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VLnative.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDcore.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDdirect.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDfamily.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDhdfs.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDlog.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDmirror.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDmpi.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDmpio.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDmulti.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDros3.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDsec2.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDsplitter.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FDstdio.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VLpassthru.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Exception.h \
+ /opt/hdf5/code/1.12.1/install/include/H5IdComponent.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DataSpace.h \
+ /opt/hdf5/code/1.12.1/install/include/H5PropList.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FaccProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FcreatProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5OcreatProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DcreatProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DxferProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5LcreatProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5LaccProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DaccProp.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Location.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Classes.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Object.h \
+ /opt/hdf5/code/1.12.1/install/include/H5AbstractDs.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Attribute.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DataType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5AtomType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5PredType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5EnumType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5IntType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5FloatType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5StrType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5CompType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5ArrayType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5VarLenType.h \
+ /opt/hdf5/code/1.12.1/install/include/H5DataSet.h \
+ /opt/hdf5/code/1.12.1/install/include/H5CommonFG.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Group.h \
+ /opt/hdf5/code/1.12.1/install/include/H5File.h \
+ /opt/hdf5/code/1.12.1/install/include/H5Library.h \
+ ../../../PsimagLite/src/Matrix.h ../../../PsimagLite/src/LapackExtra.h \
+ ../../../PsimagLite/loki/TypeTraits.h ../../../PsimagLite/src/Matrix.h \
+ ../../../PsimagLite/src/Vector.h \
+ ../../../PsimagLite/src/MatrixNonOwned.h

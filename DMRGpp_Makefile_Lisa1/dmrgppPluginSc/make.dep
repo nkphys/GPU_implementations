@@ -1,0 +1,48 @@
+apply_Htarget_sparse.o: apply_Htarget_sparse.c
+	$(CC) $(CFLAGS) -c apply_Htarget_sparse.c
+apply_Htarget_vbatch.o: apply_Htarget_vbatch.c
+	$(CC) $(CFLAGS) -c apply_Htarget_vbatch.c
+cal_kron_flops.o: cal_kron_flops.c
+	$(CC) $(CFLAGS) -c cal_kron_flops.c
+dmrg_malloc.o: dmrg_malloc.c
+	$(CC) $(CFLAGS) -c dmrg_malloc.c
+dmrg_vbatch.o: dmrg_vbatch.c
+	$(CC) $(CFLAGS) -c dmrg_vbatch.c
+dmrg_Xgemm_vbatch.o: dmrg_Xgemm_vbatch.c
+	$(CC) $(CFLAGS) -c dmrg_Xgemm_vbatch.c
+dmrg_Xgetmatrix.o: dmrg_Xgetmatrix.c
+	$(CC) $(CFLAGS) -c dmrg_Xgetmatrix.c
+dmrg_Xgetvector.o: dmrg_Xgetvector.c
+	$(CC) $(CFLAGS) -c dmrg_Xgetvector.c
+dmrg_Xsetmatrix.o: dmrg_Xsetmatrix.c
+	$(CC) $(CFLAGS) -c dmrg_Xsetmatrix.c
+dmrg_Xsetvector.o: dmrg_Xsetvector.c
+	$(CC) $(CFLAGS) -c dmrg_Xsetvector.c
+estimate_work.o: estimate_work.c
+	$(CC) $(CFLAGS) -c estimate_work.c
+gen_patches_comb.o: gen_patches_comb.c
+	$(CC) $(CFLAGS) -c gen_patches_comb.c
+get_total_memory.o: get_total_memory.c
+	$(CC) $(CFLAGS) -c get_total_memory.c
+makeFloat.o: makeFloat.c
+	$(CC) $(CFLAGS) -c makeFloat.c
+setup_matrix.o: setup_matrix.c
+	$(CC) $(CFLAGS) -c setup_matrix.c
+setup_nC.o: setup_nC.c
+	$(CC) $(CFLAGS) -c setup_nC.c
+setup_sparse_batch.o: setup_sparse_batch.c
+	$(CC) $(CFLAGS) -c setup_sparse_batch.c
+setup_vbatch.o: setup_vbatch.c
+	$(CC) $(CFLAGS) -c setup_vbatch.c
+test_vbatch.o: test_vbatch.c
+	$(CC) $(CFLAGS) -c test_vbatch.c
+unsetup_sparse_batch.o: unsetup_sparse_batch.c
+	$(CC) $(CFLAGS) -c unsetup_sparse_batch.c
+unsetup_vbatch.o: unsetup_vbatch.c
+	$(CC) $(CFLAGS) -c unsetup_vbatch.c
+Xcopy_.o: Xcopy_.c
+	$(CC) $(CFLAGS) -c Xcopy_.c
+Xgemm_.o: Xgemm_.c
+	$(CC) $(CFLAGS) -c Xgemm_.c
+Xlacpy_.o: Xlacpy_.c
+	$(CC) $(CFLAGS) -c Xlacpy_.c
