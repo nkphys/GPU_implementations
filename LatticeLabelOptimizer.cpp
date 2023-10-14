@@ -12,13 +12,39 @@
 using namespace std;
 
 
-int g_value( int Length_, Mat_2_int C_){
+
+double g_minus_gOld(int Length_, Mat_2_int &Cp_inv, int label1, int label2){
+
+double temp=0.0;
+
+for(int j=0;j<Length_;j++){
+
+if(j!=label1 && j!=label2){
+temp += (Cp_inv[label1][j] - Cp_inv[label2][j])*(label1-j)*(label1-j);
+temp += (Cp_inv[label2][j] - Cp_inv[label1][j])*(label2-j)*(label2-j);
+}
+
+
+if(j!=label1 && j!=label2){
+temp += (Cp_inv[j][label1] - Cp_inv[j][label2])*(j-label1)*(j-label1);
+temp += (Cp_inv[j][label2] - Cp_inv[j][label1])*(j-label2)*(j-label2);
+}
+
+}
+
+return temp;
+}
+
+double g_value( int Length_, Mat_2_int C_){
 
 int temp=0;
 
 for(int i=0;i<Length_;i++){
 for(int j=0;j<Length_;j++){
+
 temp += C_[i][j]*((j-i))*(j-i);//*abs(j-i)*abs(j-i);
+//temp += (1.0*C_[i][j])*((abs((1.0*j*j)-(1.0*i*i))))*(1.0/(1.0*Length_));
+
 }}
 
 return temp;
@@ -75,9 +101,9 @@ return Xl_max;
 
 int main(){
 
-int lx=8;
-int ly=10;
-int Length=100;//lx*ly;
+int lx=16;
+int ly=16;
+int Length=lx*ly;
 Mat_2_int C;
 
 double Temperature;
@@ -93,19 +119,19 @@ C[i][j]=0;
 
 
 //For PBC chain
-
+/*
 for(int i=0;i<=Length-2;i++){
 C[i][i+1]=1;
 C[i+1][i]=1;
 }
 C[0][Length-1]=1;
 C[Length-1][0]=1;
-
+*/
 
 
 
 //For 2d OBC
-/*
+
 int i_,neigh;
 for(int ix=0;ix<lx;ix++){
 for(int iy=0;iy<ly;iy++){
@@ -122,8 +148,16 @@ if(iy < ly-1){
 C[i_][neigh]=1;
 C[neigh][i_]=1;
 }
-}}
+/*
+else{ //FOR PBC ALONG Y
+assert(iy==(ly-1));
+neigh = (ix) + lx*(0);
+C[i_][neigh]=1;
+C[neigh][i_]=1;
+}
 */
+}}
+
 
 //For 2X5 ladder, rung coupled
 /*
@@ -177,8 +211,8 @@ Cp_inv_old[i][j]= C[ P_inv[i]  ][ P_inv[j] ];
 int seed=46;
 srand(seed);
 
-int Nc_old, Nc_, Dc_old, Dc_, g_old, g_;
-
+int Nc_old, Nc_, Dc_old, Dc_;
+double g_, g_old;
 
 Nc_old = Xc_for_the_givenC(Length, Cp_inv, "N");
 Dc_old = Xc_for_the_givenC(Length, Cp_inv, "D");
@@ -186,8 +220,10 @@ g_old = g_value(Length, Cp_inv);
 
 //Mat_1_doub Temperature_array = {1000.0, 800.0, 600.0, 400.0, 200.0, 100.0, 70.0, 50.0, 30.0, 20.0, 15.0, 14.0, 13.0, 12.0, 10.0, 9.0, 8.5, 8.0, 7.5, 7.0, 6.5, 6.0, 5.5, 5.0, 4.5, 4.0, 3.5, 3.0, 2.5, 2.0, 1.5, 1.0, 0.5, 0.1, 0.01};
 
+//52
 Mat_1_doub Temperature_array = {500.0, 400.0, 300.0, 200.0, 100.0, 70.0, 50.0, 30.0, 20.0, 15.0, 14.0, 12.0, 10.0, 9.0, 8.5, 8.0, 7.5, 7.0, 6.5, 6.0, 5.75, 5.5, 5.25, 5.0, 4.75, 4.5, 4.25, 4.0, 3.75, 3.5, 3.25, 3.0, 2.75, 2.5, 2.4, 2.3, 2.2, 2.1, 2.0, 1.9, 1.8, 1.7, 1.6, 1.5, 1.4, 1.3, 1.2, 1.1, 1.0, 0.5, 0.1, 0.01};
 
+//Mat_1_doub Temperature_array = {100.0, 50.0, 10.0, 5.0, 1.0, 0.5, 0.1};
 
 for(int Temperature_ind=0;Temperature_ind<52;Temperature_ind++){
 Temperature = Temperature_array[Temperature_ind];
@@ -196,7 +232,7 @@ beta = 1.0/Temperature;
 //--------------- Optimizer---------------------//
 
 
-int Max_Flips_tried=100000;
+int Max_Flips_tried=1000000;
 int flips_done=0;
 int flips_tried=0;
 
@@ -225,7 +261,7 @@ flip_is_junk=false;
 
 if(!flip_is_junk){
 
-cout<<c1<<"  "<<c2<<endl;
+//cout<<c1<<"  "<<c2<<endl;
 
 label1=P[c1];
 label2=P[c2];
@@ -243,9 +279,9 @@ Cp_inv[label1][i] = temp2;
 Cp_inv[label2][i] = temp1;
 }
 
-Nc_ = Xc_for_the_givenC(Length, Cp_inv, "N");
-Dc_ = Xc_for_the_givenC(Length, Cp_inv, "D");
-g_ = g_value(Length, Cp_inv);
+//Nc_ = Xc_for_the_givenC(Length, Cp_inv, "N");
+//Dc_ = Xc_for_the_givenC(Length, Cp_inv, "D");
+//g_ = g_value(Length, Cp_inv);
 
 double p = abs(rand()/(1.0*RAND_MAX));
 //if(Nc_<Nc_old){
@@ -255,7 +291,15 @@ double p = abs(rand()/(1.0*RAND_MAX));
 //cout<<"check : "<<exp(1.0*beta*(1.0*(g_-g_old)))<<"   "<<p<<endl;
 //cout<<"check2 : "<<beta<<"  "<<g_<<"  "<<g_old<<endl;
 
-if(exp(-1.0*beta*(g_-g_old))>p){// && Nc_<=Nc_old){
+
+//-- g_m_gold-------
+double g_m_gOld=0.0;
+g_m_gOld=g_minus_gOld(Length, Cp_inv, label1, label2);
+
+
+
+//if(exp(-1.0*beta*(g_-g_old))>p){// && Nc_<=Nc_old){
+if(exp(-1.0*beta*(g_m_gOld))>p){
 
 //flip is accepted;
 P[c1]=label2;
@@ -263,30 +307,34 @@ P[c2]=label1;
 P_inv[label1]=c2;
 P_inv[label2]=c1;
 flips_done++;
-Nc_old=Nc_;
-Dc_old=Dc_;
+//Nc_old=Nc_;
+//Dc_old=Dc_;
 Cp_inv_old=Cp_inv;
-g_old=g_;
+//g_old=g_;
+flips_done++;
 }
 else{
 //flip is not accepted;
 //Dont change Nc_old and Cp_inv_old
-Nc_=Nc_old; //just to write the Nc_ for present configuration
-Dc_=Dc_old;
+//Nc_=Nc_old; //just to write the Nc_ for present configuration
+//Dc_=Dc_old;
 P[c1]=label1;
 P[c2]=label2;
 P_inv[label1]=c1;
 P_inv[label2]=c2;
 Cp_inv = Cp_inv_old;
-g_=g_old;
+//g_=g_old;
 }
 
-cout<<"Stats : "<<flips_tried<<"  "<<flips_done<<"  "<<Nc_<<"  "<<Dc_<<"  "<<g_<<endl;
+//cout<<"Stats : "<<flips_tried<<"  "<<flips_done<<"  "<<Nc_<<"  "<<Dc_<<"  "<<g_<<endl;
+//cout<<"Stats : "<<flips_tried<<"  "<<flips_done<<"  "<<g_<<"  "<<Temperature<<endl;
+/*
 cout<<"P : ";
 for(int i=0;i<Length;i++){
 cout<<P[i]<<" ";
 }
 cout<<endl;
+*/
 /*
 cout<<"Printing C:"<<endl;
 for(int i=0;i<Length;i++){
@@ -296,7 +344,7 @@ cout<<Cp_inv[i][j]<<" ";
 cout<<endl;
 }
 */
-cout<<"----------"<<endl;
+//cout<<"----------"<<endl;
 
 
 
@@ -306,11 +354,22 @@ flips_tried++;
 
 }
 
+double Nc__= Xc_for_the_givenC(Length, Cp_inv, "N");
+double Dc__= Xc_for_the_givenC(Length, Cp_inv, "D");
+double gc__= g_value(Length, Cp_inv);
+cout<<"Stat : "<<Temperature<<"  "<<Nc__<<"  "<<Dc__<<"  "<<gc__<<endl;
+//cout<<"Final Nc(T="<< Temperature <<") = "<<Xc_for_the_givenC(Length, Cp_inv, "N")<<endl;
+//cout<<"Final Dc(T="<< Temperature <<") = "<<Xc_for_the_givenC(Length, Cp_inv, "D")<<endl;
+//cout<<"Final g(T="<< Temperature <<") = "<<g_value(Length, Cp_inv)<<endl;
 
 
-cout<<"Final Nc(T="<< Temperature <<") = "<<Xc_for_the_givenC(Length, Cp_inv, "N")<<endl;
-cout<<"Final Dc(T="<< Temperature <<") = "<<Xc_for_the_givenC(Length, Cp_inv, "D")<<endl;
-cout<<"Final g(T="<< Temperature <<") = "<<g_value(Length, Cp_inv)<<endl;
+cout<<"Flips tried, flips done for Temperature = "<<Temperature<<"  "<<flips_tried<<"  "<<flips_done<<endl;
+
+cout<<"P for Temperature = "<<Temperature<<endl;;
+for(int i=0;i<Length;i++){
+cout<<P[i]<<" ";
+}
+cout<<endl;
 
 cout<<"Printing C for Temperature = : "<< Temperature<<endl;
 for(int i=0;i<Length;i++){
